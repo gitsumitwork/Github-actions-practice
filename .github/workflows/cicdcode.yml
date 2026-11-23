@@ -1,0 +1,33 @@
+name: codecheck 
+
+on: 
+  workflow_dispatch: 
+
+jobs:
+  
+    code:
+      runs-on: ubuntu-latest
+      steps:
+        - name: code is write
+          run: echo "code is complete"
+
+    build:
+      
+          runs-on: ubuntu-latest
+          steps:
+          - name: code is build
+            run: echo "build is complete"
+
+    test:
+       needs: [code,build]
+       runs-on: ubuntu-latest
+       steps:
+        - name: code is tested
+          run: echo "test is complete"
+          
+    deploy:
+      needs: [code,build,test]
+      runs-on: ubuntu-latest
+      steps:
+         - name: code is deployed
+           run: echo "deployment is complete"
